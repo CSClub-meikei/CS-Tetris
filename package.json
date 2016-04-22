@@ -1,0 +1,11 @@
+{
+  "name": "tetoris2",
+  "version": "0.1.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "drumath",
+  "license": "ISC"
+}
