@@ -1,0 +1,12 @@
+.blockElement {
+  width: 20px;
+  height: 20px;
+  margin: 1px;
+}
+.blockElement .red {
+  background-color: #cb7373;
+  border-right-color: #a35b5b;
+  border-bottom-color: #a35b5b;
+}
+
+/*# sourceMappingURL=index.css.map */

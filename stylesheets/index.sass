@@ -1,0 +1,21 @@
+$hen: 20px
+
+//color variables
+$red: #cb7373
+$red-shade: #a35b5b
+$blue: #7ed6db
+$green: #6fe08b
+$purple: #e27ae4
+$yellow: #d9e086
+
+@mixin blockElement
+	width: $hen
+	height: $hen
+	margin: 1px
+
+.blockElement
+	@include blockElement
+	.red
+		background-color: $red
+		border-right-color: $red-shade
+		border-bottom-color: $red-shade
