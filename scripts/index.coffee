@@ -6,3 +6,6 @@ class TetorisObject
 	update = () ->
 
 	create = () ->
+    $('#field').append(
+      '<div class="blockElement"></div>'
+    )
