@@ -3,6 +3,7 @@ $hen: 20px
 //color variables
 $red: #cb7373
 $red-shade: #a35b5b
+$red-light: #d78989
 $blue: #7ed6db
 $green: #6fe08b
 $purple: #e27ae4
@@ -12,6 +13,23 @@ $yellow: #d9e086
 	width: $hen
 	height: $hen
 	margin: 1px
+
+.falling
+	position: relative
+	top: 0px
+	left: 0px
+	width: 20px
+	height: 20px
+	background-color: $red
+	border-top: 5px solid $red-light
+	border-left: 5px solid $red-light
+	border-bottom: 5px solid $red-shade
+	border-right: 5px solid $red-shade
+	// border: 5px outset $red
+	display: inline-block
+	margin: 0%
+	padding: 0%
+	vertical-align: middle
 
 .blockElement
 	@include blockElement
