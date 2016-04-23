@@ -3,8 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>tetoris2</title>
-		<link rel="stylesheet" href="/stylesheets/index.css" media="screen" title="no title" charset="utf-8">
-		<script type="text/javascript" src="/scripts/index.js"></script>
+		<link rel="stylesheet" href="stylesheets/index.css" media="screen" title="no title" charset="utf-8">
 		<script>
 			if (typeof module !== 'undefined') {
 			  window.__tempModuleExports__ = module.exports;
@@ -19,13 +18,16 @@
 			  delete window.__tempModuleExports__;
 			}
 		</script>
+		<script type="text/javascript" src="scripts/index.js"></script>
+		<script type="text/javascript" src="scripts/move.js"></script>
 	</head>
-	
+
 	<body>
 		<div id="header" class="header"></div>
 		<div id="menu" class="menu"></div>
 		<div id="field" class="field">
-
+			<div class="falling" id="fall"></div><br /><div class="falling"></div><div class="falling"></div><div class="falling"></div>
 		</div>
+		<input type="button" id="button" name="button" value="down" />
 	</body>
 </html>

@@ -1,3 +1,20 @@
+.falling {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 20px;
+  height: 20px;
+  background-color: #cb7373;
+  border-top: 5px solid #d78989;
+  border-left: 5px solid #d78989;
+  border-bottom: 5px solid #a35b5b;
+  border-right: 5px solid #a35b5b;
+  display: inline-block;
+  margin: 0%;
+  padding: 0%;
+  vertical-align: middle;
+}
+
 .blockElement {
   width: 20px;
   height: 20px;
