@@ -5,19 +5,27 @@
   move = function(direction, minus) {
     var fun;
     return $('.falling').each(fun = function() {
-      var blockTop;
-      blockTop = $(this).css("" + direction);
+      var blockBottom, blockCSS, blockRight;
+      blockCSS = parseInt($(this).css("" + direction).slice(0, -2));
+      blockBottom = parseInt($(this).css("bottom").slice(0, -2));
+      blockRight = parseInt($(this).css("right").slice(0, -2));
       if (minus === 1) {
-        blockTop = parseInt(blockTop.slice(0, -2)) + 10;
+        if (blockCSS < 500) {
+          blockCSS += 30;
+        }
       } else {
-        blockTop = parseInt(blockTop.slice(0, -2)) - 10;
+        if (blockCSS > 0) {
+          blockCSS -= 30;
+        }
       }
-      return $(this).css("" + direction, blockTop);
+      return $(this).css("" + direction, blockCSS);
     });
   };
 
   $(window).on("keydown", function(e) {
-    console.log(e.keyCode);
+    var bot;
+    bot = $('#field').css("bottom");
+    console.log(bot);
     switch (e.keyCode) {
       case 40:
         return move("top", 1);

@@ -1,17 +1,20 @@
 
 move = (direction, minus) ->
-	$('.falling').each(fun = () ->
-			blockTop = $(this).css("#{direction}")
+	$('.falling').each(fun = () ->		#
+			blockCSS = parseInt($(this).css("#{direction}").slice(0, -2))
+			blockBottom = parseInt($(this).css("bottom").slice(0, -2))
+			blockRight = parseInt($(this).css("right").slice(0, -2))
 			if minus == 1
-				blockTop = parseInt(blockTop.slice(0, -2)) + 10
+				blockCSS += 30 if blockCSS < 500
 			else
-				blockTop = parseInt(blockTop.slice(0, -2)) - 10
-			# console.log(blockTop)
-			$(this).css("#{direction}", blockTop)
+				blockCSS -= 30 if blockCSS > 0
+			# console.log(blockCSS)
+			$(this).css("#{direction}", blockCSS)
 		)
 
 $(window).on "keydown", (e) ->
-	console.log(e.keyCode)
+	bot = $('#field').css("bottom")
+	console.log bot
 	switch e.keyCode
 	  when 40
 	    move("top", 1)
