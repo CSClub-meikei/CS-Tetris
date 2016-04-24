@@ -22,7 +22,7 @@ move directry. Then type like `npm start`. Also you can translate into exe file 
   "main": "app.js",
   "scripts": {
     "start": "electron .",
-		"run-build": "acer"
+    "run-build": "acer"
   },
   "author": "drumath",
   "license": "ISC"

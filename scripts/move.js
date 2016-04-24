@@ -4,13 +4,17 @@
 
   move = function(direction, minus) {
     var fun;
+    if (direction == null) {
+      direction = "top";
+    }
+    if (minus == null) {
+      minus = 1;
+    }
     return $('.falling').each(fun = function() {
-      var blockBottom, blockCSS, blockRight;
+      var blockCSS;
       blockCSS = parseInt($(this).css("" + direction).slice(0, -2));
-      blockBottom = parseInt($(this).css("bottom").slice(0, -2));
-      blockRight = parseInt($(this).css("right").slice(0, -2));
       if (minus === 1) {
-        if (blockCSS < 500) {
+        if (blockCSS < 600) {
           blockCSS += 30;
         }
       } else {
@@ -18,21 +22,21 @@
           blockCSS -= 30;
         }
       }
+      console.log(blockCSS);
       return $(this).css("" + direction, blockCSS);
     });
   };
 
   $(window).on("keydown", function(e) {
-    var bot;
-    bot = $('#field').css("bottom");
-    console.log(bot);
     switch (e.keyCode) {
       case 40:
-        return move("top", 1);
+        return move();
       case 39:
         return move("left", 1);
       case 37:
         return move("left", -1);
+      case 32:
+        return setInterval("move()", 1000);
     }
   });
 
