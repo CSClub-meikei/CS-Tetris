@@ -1,16 +1,21 @@
 
-blockTop = 0
-move = () ->
-	blockTop+=10
+move = (direction, minus) ->
 	$('.falling').each(fun = () ->
-			console.log(blockTop)
-			$(this).css("top", blockTop)
+			blockTop = $(this).css("#{direction}")
+			if minus == 1
+				blockTop = parseInt(blockTop.slice(0, -2)) + 10
+			else
+				blockTop = parseInt(blockTop.slice(0, -2)) - 10
+			# console.log(blockTop)
+			$(this).css("#{direction}", blockTop)
 		)
-	# console.log(blockTop)
-	# $('#fall').css("width", blockTop)
-	# console.log ($('#fall').css("width"))
 
-
-$(document).on "click", '#button', ->
-	console.log("Hi")
-	move()
+$(window).on "keydown", (e) ->
+	console.log(e.keyCode)
+	switch e.keyCode
+	  when 40
+	    move("top", 1)
+    when 39
+      move("left", 1)
+    when 37
+      move("left", -1)
