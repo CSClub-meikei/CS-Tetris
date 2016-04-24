@@ -14,6 +14,13 @@ $yellow: #d9e086
 	height: $hen
 	margin: 1px
 
+.field
+	border: 1px solid #000000
+	position: relative
+	width: 500px
+	height: 500px
+	bottom: 50px
+
 .falling
 	position: relative
 	top: 0px
@@ -25,15 +32,7 @@ $yellow: #d9e086
 	border-left: 5px solid $red-light
 	border-bottom: 5px solid $red-shade
 	border-right: 5px solid $red-shade
-	// border: 5px outset $red
 	display: inline-block
 	margin: 0%
 	padding: 0%
 	vertical-align: middle
-
-.blockElement
-	@include blockElement
-	.red
-		background-color: $red
-		border-right-color: $red-shade
-		border-bottom-color: $red-shade
