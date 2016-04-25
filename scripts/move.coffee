@@ -18,9 +18,9 @@ $(window).on "keydown", (e) ->
 	switch e.keyCode
 	  when 40
 	    move()
-    when 39
-      move("left", 1)
-    when 37
-      move("left", -1)
-    when 32
-      setInterval("move()", 1000)
+    	　when 39
+      	　　move("left", 1)
+    	　when 37
+      	　　move("left", -1)
+    	　when 32
+      	　　setInterval("move()", 1000)
