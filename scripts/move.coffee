@@ -16,11 +16,11 @@ $(window).on "keydown", (e) ->
 	# bot = $('#field').css("bottom")
 	# console.log bot
 	switch e.keyCode
-	  when 40
-	    move()
-    	　when 39
-      	　　move("left", 1)
-    	　when 37
-      	　　move("left", -1)
-    	　when 32
-      	　　setInterval("move()", 1000)
+		when 40
+			move()
+		when 39
+			move("left", 1)
+		when 37
+			move("left", -1)
+		when 32
+			setInterval("move()", 1000)
