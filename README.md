@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Tetoris by CSClub
 Tetoris game for our school festival
 
@@ -33,4 +32,3 @@ move directry. Then type like `npm start`. Also you can translate into exe file 
 =======
 # CS-Tetris
 文化祭用のゲーム
->>>>>>> 1b5bbd157bf69d09b386341ce2850c8ece9ab016
