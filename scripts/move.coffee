@@ -4,7 +4,7 @@ move = (direction = "top", minus = 1) ->
 			# blockBottom = parseInt($(this).css("bottom").slice(0, -2))
 			# blockRight = parseInt($(this).css("right").slice(0, -2))
 			if minus == 1
-				blockCSS += 30 if blockCSS < 600
+				blockCSS += 30 if blockCSS+30 < 600
 			else
 				blockCSS -= 30 if blockCSS > 0
 			console.log(blockCSS)
