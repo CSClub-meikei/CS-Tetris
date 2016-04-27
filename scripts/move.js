@@ -10,11 +10,11 @@
     if (minus == null) {
       minus = 1;
     }
-    return $('.falling').each(fun = function() {
+    $('.falling').each(fun = function() {
       var blockCSS;
       blockCSS = parseInt($(this).css("" + direction).slice(0, -2));
       if (minus === 1) {
-        if (blockCSS + 30 < 600) {
+        if (blockCSS + 60 < 600) { //TODO:横と縦のサイからあたり判定→クラスメンバに登録
           blockCSS += 30;
         }
       } else {
@@ -23,7 +23,7 @@
         }
       }
       console.log(blockCSS);
-      return $(this).css("" + direction, blockCSS);
+      $(this).css("" + direction, blockCSS);
     });
   };
 
