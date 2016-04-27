@@ -1,38 +1,42 @@
-$side: 20px
+$hen: 20px
+$darken-rate: 20%
+$light-rate: 20%
 
 //color variables
-$red: rgb(196, 203, 115)
-$red-shade: rgb(163, 91, 91)
-$red-light: rgb(215, 137, 137)
-$blue: rgb(126, 214, 219)
-$green: rgb(111, 224, 139)
-$purple: rgb(226, 122, 228)
-$yellow: rgb(217, 224, 135)
-
-@mixin blockElement
-	width: $side
-	height: $side
-	margin: 1px
+$red: #cb8273
+$blue: #57c4b4
+$green: #46c243
+$purple: #e27ae4
+$yellow: #c2cf31
 
 .field
 	border: 1px solid #000000
 	position: relative
 	width: 600px
 	height: 600px
-	// bottom: 50px
 
-.falling
+@mixin blockElement($base-color)
 	position: relative
 	top: 0px
 	left: 0px
 	width: 20px
 	height: 20px
-	background-color: $red
-	border-top: 5px solid $red-light
-	border-left: 5px solid $red-light
-	border-bottom: 5px solid $red-shade
-	border-right: 5px solid $red-shade
+	background-color: $base-color
+	border-top: 5px solid lighten($base-color, $light-rate)
+	border-left: 5px solid lighten($base-color, $light-rate)
+	border-bottom: 5px solid darken($base-color, $darken-rate)
+	border-right: 5px solid darken($base-color, $darken-rate)
 	display: inline-block
 	margin: 0%
 	padding: 0%
 	vertical-align: middle
+
+
+.falling_red
+	@include blockElement($red)
+
+.falling_blue
+	@include blockElement($blue)
+
+.falling_yellow
+	@include blockElement($yellow)

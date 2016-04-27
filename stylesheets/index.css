@@ -5,17 +5,51 @@
   height: 600px;
 }
 
-.falling {
+.falling_red {
   position: relative;
   top: 0px;
   left: 0px;
   width: 20px;
   height: 20px;
-  background-color: #cb7373;
-  border-top: 5px solid #d78989;
-  border-left: 5px solid #d78989;
-  border-bottom: 5px solid #a35b5b;
-  border-right: 5px solid #a35b5b;
+  background-color: #cb8273;
+  border-top: 5px solid #e7c4bd;
+  border-left: 5px solid #e7c4bd;
+  border-bottom: 5px solid #9e4b3b;
+  border-right: 5px solid #9e4b3b;
+  display: inline-block;
+  margin: 0%;
+  padding: 0%;
+  vertical-align: middle;
+}
+
+.falling_blue {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 20px;
+  height: 20px;
+  background-color: #57c4b4;
+  border-top: 5px solid #a2dfd6;
+  border-left: 5px solid #a2dfd6;
+  border-bottom: 5px solid #2f8679;
+  border-right: 5px solid #2f8679;
+  display: inline-block;
+  margin: 0%;
+  padding: 0%;
+  vertical-align: middle;
+}
+
+.falling_yellow {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 20px;
+  height: 20px;
+  background-color: #c2cf31;
+  border-top: 5px solid #dae284;
+  border-left: 5px solid #dae284;
+  border-bottom: 5px solid #757d1d;
+  border-right: 5px solid #757d1d;
   display: inline-block;
   margin: 0%;
   padding: 0%;

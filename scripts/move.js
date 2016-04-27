@@ -10,7 +10,7 @@
     if (minus == null) {
       minus = 1;
     }
-    $('.falling').each(fun = function() {
+    $('.falling_red').each(fun = function() {
       var blockCSS;
       blockCSS = parseInt($(this).css("" + direction).slice(0, -2));
       if (minus === 1) {
