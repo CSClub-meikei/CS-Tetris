@@ -40,9 +40,11 @@ $(window).on("keydown", function(e) {
       return move("left", 1);
     case 37:
       return move("left", -1);
-    case 32:
-      return setInterval("move()", 1000);
   }
+});
+
+$(document).on("ready", function() {
+  return setInterval("move()", 500);
 });
 
 hey = function() {

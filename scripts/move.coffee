@@ -20,8 +20,11 @@ $(window).on "keydown", (e) ->
 			move("left", 1)
 		when 37
 			move("left", -1)
-		when 32
-			setInterval("move()", 1000)
+		# when 32
+		# 	setInterval("move()", 1000)
+
+$(document).on "ready", () ->
+	setInterval("move()", 500)
 
 hey = () ->
 	window.alert("Hello")
