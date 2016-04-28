@@ -15,3 +15,9 @@ class TetorisObject
 	create = () -> #クラスの中に入れるべきではない？
     $('#field').append('<div class="blockElement"></div>')
     return true
+
+
+class TetoriMinoRed extends TetorisObject
+
+  constructor: (args) ->
+    create
