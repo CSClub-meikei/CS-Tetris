@@ -2,16 +2,24 @@
 var TetriminoBlockElement;
 
 TetriminoBlockElement = (function() {
-  var helloConole;
+  var helloConsole;
 
-  function TetriminoBlockElement() {
-    helloConole("by constructor");
+  function TetriminoBlockElement(name, pTop, pLeft) {
+    if (pTop == null) {
+      pTop = 0;
+    }
+    if (pLeft == null) {
+      pLeft = 0;
+    }
+    this.pointTop = pTop;
+    this.pointLeft = pLeft;
+    this.myName = name;
     this.append();
+    this.move(this.pointTop, this.pointLeft);
   }
 
   TetriminoBlockElement.prototype.append = function() {
-    helloConole("from @append");
-    return $("#field").append("<div class='falling_red'></div>");
+    return $("#field").append("<div class='falling_red' id='" + this.myName + "'></div>");
   };
 
   TetriminoBlockElement.prototype.move = function(deltaPointTop, deltaPointLeft) {
@@ -22,10 +30,10 @@ TetriminoBlockElement = (function() {
     if (deltaPointLeft == null) {
       deltaPointLeft = 0;
     }
-    pointTop = this.getTop(".falling_red");
-    pointLeft = this.getLeft(".falling_red");
-    $(".falling_red").css("top", pointTop + deltaPointTop);
-    return $(".falling_red").css("left", pointLeft + deltaPointLeft);
+    pointTop = this.getTop("#" + this.myName);
+    pointLeft = this.getLeft("#" + this.myName);
+    $("#" + this.myName).css("top", pointTop + deltaPointTop);
+    return $("#" + this.myName).css("left", pointLeft + deltaPointLeft);
   };
 
   TetriminoBlockElement.prototype.getTop = function(selector, property) {
@@ -42,7 +50,7 @@ TetriminoBlockElement = (function() {
     return parseInt($(selector).css("left").slice(0, -2));
   };
 
-  helloConole = function(str) {
+  helloConsole = function(str) {
     return console.log("hello from " + str);
   };
 

@@ -1,12 +1,20 @@
-block = 0
+blocks = []
 $(document).on "ready", () ->
-  console.log "Hi."
-  block = new TetriminoBlockElement
+  blocks.push new TetriminoBlockElement("testBlock01", 0, 0)
+  blocks.push new TetriminoBlockElement("testBlock02", 30, 0)
+  blocks.push new TetriminoBlockElement("testBlock03", 30, 30)
+  blocks.push new TetriminoBlockElement("testBlock04", 30, 60)
+  for block in blocks
+    console.log "#{block}: #{block.pointLeft}"
+  return
 
 $(window).on "keydown", (e)->
   if e.keyCode == 40
-    block.move(30, 0)
+    for block in blocks
+      block.move(30, 0)
   else if e.keyCode == 39
-    block.move(0, 30)
+    for block in blocks
+      block.move(0, 30)
   else if e.keyCode == 37
-    block.move(0, -30)
+    for block in blocks
+      block.move(0, -30)

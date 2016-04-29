@@ -1,19 +1,23 @@
 class TetriminoBlockElement
 
-  constructor: () ->
-    helloConole("by constructor")
+  constructor: (name, pTop=0, pLeft=0) ->
+    @pointTop = pTop
+    @pointLeft = pLeft
+    @myName = name
+
     @append()
+    @move(@pointTop, @pointLeft)
 
   append: () ->
-    helloConole("from @append")
-    $("#field").append("<div class='falling_red'></div>")
+    # helloConsole("from @append")
+    $("#field").append("<div class='falling_red' id='#{@myName}'></div>")
 
   move: (deltaPointTop=0, deltaPointLeft=0) ->
-    pointTop = @getTop(".falling_red")
-    pointLeft = @getLeft(".falling_red")
+    pointTop = @getTop("##{@myName}")
+    pointLeft = @getLeft("##{@myName}")
 
-    $(".falling_red").css("top", pointTop + deltaPointTop)
-    $(".falling_red").css("left", pointLeft + deltaPointLeft)
+    $("##{@myName}").css("top", pointTop + deltaPointTop)
+    $("##{@myName}").css("left", pointLeft + deltaPointLeft)
 
   getTop: (selector, property="top") ->
     parseInt($(selector).css("top").slice(0, -2))
@@ -21,5 +25,5 @@ class TetriminoBlockElement
   getLeft: (selector, property="left") ->
     parseInt($(selector).css("left").slice(0, -2))
 
-  helloConole = (str) ->
+  helloConsole = (str) ->
     console.log "hello from #{str}"
