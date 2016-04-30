@@ -33,6 +33,9 @@ class TetriminoBlockElement
   getLeft: (selector, property="left") ->
     parseInt($(selector).css("left").slice(0, -2))
 
+  delete: () ->
+    $("##{@myName}").remove()
+
   helloConsole = (str) ->
     console.log "hello from #{str}"
     return

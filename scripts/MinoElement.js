@@ -59,6 +59,10 @@ TetriminoBlockElement = (function() {
     return parseInt($(selector).css("left").slice(0, -2));
   };
 
+  TetriminoBlockElement.prototype["delete"] = function() {
+    return $("#" + this.myName).remove();
+  };
+
   helloConsole = function(str) {
     console.log("hello from " + str);
   };
