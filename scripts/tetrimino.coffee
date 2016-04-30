@@ -1,29 +1,20 @@
-class TetriminoBlockElement
+idNumber = 0
 
-  constructor: (name, pTop=0, pLeft=0) ->
-    @pointTop = pTop
-    @pointLeft = pLeft
-    @myName = name
+class TetriminoRed
 
-    @append()
-    @move(@pointTop, @pointLeft)
+  constructor: () ->
+    @point =
+      top: 0
+      left: 0
+    @blocks = [
+      new TetriminoBlockElement("block#{idNumber++}", 0, 0),
+      new TetriminoBlockElement("block#{idNumber++}", 30, 0),
+      new TetriminoBlockElement("block#{idNumber++}", 30, 30),
+      new TetriminoBlockElement("block#{idNumber++}", 30, 60),
+    ]
 
-  append: () ->
-    # helloConsole("from @append")
-    $("#field").append("<div class='falling_red' id='#{@myName}'></div>")
-
-  move: (deltaPointTop=0, deltaPointLeft=0) ->
-    pointTop = @getTop("##{@myName}")
-    pointLeft = @getLeft("##{@myName}")
-
-    $("##{@myName}").css("top", pointTop + deltaPointTop)
-    $("##{@myName}").css("left", pointLeft + deltaPointLeft)
-
-  getTop: (selector, property="top") ->
-    parseInt($(selector).css("top").slice(0, -2))
-
-  getLeft: (selector, property="left") ->
-    parseInt($(selector).css("left").slice(0, -2))
-
-  helloConsole = (str) ->
-    console.log "hello from #{str}"
+  move: (deltaPointTop, deltaPointLeft) ->
+    @point.top += deltaPointTop
+    @point.left += deltaPointLeft
+    for block in @blocks
+      block.move(deltaPointTop, deltaPointLeft)
