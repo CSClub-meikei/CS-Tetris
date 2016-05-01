@@ -6,36 +6,43 @@ var Tetrimino, TetriminoRed, idNumber,
 idNumber = 0;
 
 Tetrimino = (function() {
-  function Tetrimino(locate) {
+  function Tetrimino(locate, type) {
+    this.type = type;
     this.point = {
       top: 0,
       left: 0
     };
-    this.blocks = [new TetriminoBlockElement("block" + (idNumber++), locate[0], locate[1]), new TetriminoBlockElement("block" + (idNumber++), locate[2], locate[3]), new TetriminoBlockElement("block" + (idNumber++), locate[4], locate[5]), new TetriminoBlockElement("block" + (idNumber++), locate[6], locate[7])];
-    this.deg0 = locate;
-    this.deg90 = [];
-    this.deg180 = [];
-    this.deg270 = [];
+    this.blocks = [new TetriminoBlockElement("block" + (idNumber++), locate[0], locate[1], type), new TetriminoBlockElement("block" + (idNumber++), locate[2], locate[3], type), new TetriminoBlockElement("block" + (idNumber++), locate[4], locate[5], type), new TetriminoBlockElement("block" + (idNumber++), locate[6], locate[7], type)];
+    this.deg = {
+      "deg0": locate,
+      "deg90": [0, 0, 0, 0, 0, 0, 0, 0],
+      "deg180": [0, 0, 0, 0, 0, 0, 0, 0],
+      "deg270": [0, 0, 0, 0, 0, 0, 0, 0]
+    };
   }
 
   Tetrimino.prototype.move = function(deltaPointTop, deltaPointLeft) {
-    var block, i, len, ref;
+    var block, j, len, ref, results;
     this.point.top += deltaPointTop;
     this.point.left += deltaPointLeft;
     ref = this.blocks;
-    for (i = 0, len = ref.length; i < len; i++) {
-      block = ref[i];
-      block.move(deltaPointTop, deltaPointLeft);
+    results = [];
+    for (j = 0, len = ref.length; j < len; j++) {
+      block = ref[j];
+      results.push(block.move(deltaPointTop, deltaPointLeft));
     }
-    console.log(this.point.top);
-    return console.log(this.point.left);
+    return results;
   };
 
   Tetrimino.prototype.rotate = function(deg) {
-    this.blocks[0].moveAbolute(this.point.top + this.deg0[0], this.point.left + this.deg0[1]);
-    this.blocks[1].moveAbolute(this.point.top + this.deg0[2], this.point.left + this.deg0[3]);
-    this.blocks[2].moveAbolute(this.point.top + this.deg0[4], this.point.left + this.deg0[5]);
-    return this.blocks[3].moveAbolute(this.point.top + this.deg0[6], this.point.left + this.deg0[7]);
+    var block, i, j, len, ref, results;
+    ref = this.blocks;
+    results = [];
+    for (i = j = 0, len = ref.length; j < len; i = ++j) {
+      block = ref[i];
+      results.push(block.moveAbsolute(this.point.top + this.deg["deg" + deg][i * 2], this.point.left + this.deg["deg" + deg][i * 2 + 1]));
+    }
+    return results;
   };
 
   return Tetrimino;
@@ -46,7 +53,10 @@ TetriminoRed = (function(superClass) {
   extend(TetriminoRed, superClass);
 
   function TetriminoRed() {
-    TetriminoRed.__super__.constructor.call(this, [0, 0, 30, 0, 30, 30, 30, 60]);
+    TetriminoRed.__super__.constructor.call(this, [0, 0, 30, 0, 30, 30, 30, 60], "red");
+    this.deg["deg90"] = [0, 30, 0, 60, 30, 30, 60, 30];
+    this.deg["deg180"] = [30, 0, 30, 30, 30, 60, 60, 60];
+    this.deg["deg270"] = [0, 30, 30, 30, 60, 0, 60, 30];
   }
 
   return TetriminoRed;

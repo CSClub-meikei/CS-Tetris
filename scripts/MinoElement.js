@@ -40,9 +40,9 @@ TetriminoBlockElement = (function() {
     $("#" + this.myName).css("left", pointLeft + deltaPointLeft);
   };
 
-  TetriminoBlockElement.prototype.moveAbolute = function(top, left) {
-    $("#" + this.myName).css("top", pointTop + deltaPointTop);
-    $("#" + this.myName).css("left", pointLeft + deltaPointLeft);
+  TetriminoBlockElement.prototype.moveAbsolute = function(top, left) {
+    $("#" + this.myName).css("top", top);
+    $("#" + this.myName).css("left", left);
   };
 
   TetriminoBlockElement.prototype.getTop = function(selector, property) {

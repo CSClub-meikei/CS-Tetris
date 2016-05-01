@@ -1,12 +1,19 @@
 blocks = []
 test = 0
+degValue = 0
 $(document).on "ready", () ->
   test = new TetriminoRed
 
 $(window).on "keydown", (e)->
-  if e.keyCode == 40
+  if e.keyCode is 40
     test.move(30, 0)
-  else if e.keyCode == 39
+  else if e.keyCode is 39
     test.move(0, 30)
-  else if e.keyCode == 37
+  else if e.keyCode is 37
     test.move(0,-30)
+  else if e.keyCode is 13
+    if degValue < 270
+      test.rotate(degValue+=90)
+    else
+      test.rotate(0)
+      degValue = 0

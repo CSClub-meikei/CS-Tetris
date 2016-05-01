@@ -22,9 +22,9 @@ class TetriminoBlockElement
     $("##{@myName}").css("left", pointLeft + deltaPointLeft)
     return
 
-  moveAbolute: (top, left) ->
-    $("##{@myName}").css("top", pointTop + deltaPointTop)
-    $("##{@myName}").css("left", pointLeft + deltaPointLeft)
+  moveAbsolute: (top, left) ->
+    $("##{@myName}").css("top", top)
+    $("##{@myName}").css("left", left)
     return
 
   getTop: (selector, property="top") ->
