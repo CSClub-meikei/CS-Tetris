@@ -18,6 +18,7 @@ TetriminoBlockElement = (function() {
     this.pointLeft = pLeft;
     this.myName = name;
     this.type = color;
+    this.me = "#" + this.myName;
     this.append();
     this.move(this.pointTop, this.pointLeft);
   }
@@ -34,15 +35,15 @@ TetriminoBlockElement = (function() {
     if (deltaPointLeft == null) {
       deltaPointLeft = 0;
     }
-    pointTop = this.getTop("#" + this.myName);
-    pointLeft = this.getLeft("#" + this.myName);
-    $("#" + this.myName).css("top", pointTop + deltaPointTop);
-    $("#" + this.myName).css("left", pointLeft + deltaPointLeft);
+    pointTop = this.getTop(this.me);
+    pointLeft = this.getLeft(this.me);
+    $(this.me).css("top", pointTop + deltaPointTop);
+    $(this.me).css("left", pointLeft + deltaPointLeft);
   };
 
   TetriminoBlockElement.prototype.moveAbsolute = function(top, left) {
-    $("#" + this.myName).css("top", top);
-    $("#" + this.myName).css("left", left);
+    $(this.me).css("top", top);
+    $(this.me).css("left", left);
   };
 
   TetriminoBlockElement.prototype.getTop = function(selector, property) {
@@ -60,7 +61,37 @@ TetriminoBlockElement = (function() {
   };
 
   TetriminoBlockElement.prototype["delete"] = function() {
-    return $("#" + this.myName).remove();
+    return $(this.me).remove();
+  };
+
+  TetriminoBlockElement.prototype.judgeLeft = function(direction, value) {
+    var pro;
+    pro = this.getLeft(this.me) + 30;
+    if (pro >= 600) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  TetriminoBlockElement.prototype.judgeRight = function() {
+    var pro;
+    pro = this.getLeft(this.me) - 30;
+    if (pro < 0) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  TetriminoBlockElement.prototype.judgeBottom = function() {
+    var pro;
+    pro = this.getTop(this.me) + 30;
+    if (pro >= 600) {
+      return false;
+    } else {
+      return true;
+    }
   };
 
   helloConsole = function(str) {

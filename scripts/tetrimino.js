@@ -22,16 +22,42 @@ Tetrimino = (function() {
   }
 
   Tetrimino.prototype.move = function(deltaPointTop, deltaPointLeft) {
-    var block, j, len, ref, results;
+    var block, j, k, l, len, len1, len2, len3, m, ref, ref1, ref2, ref3;
+    if (deltaPointTop !== 0) {
+      ref = this.blocks;
+      for (j = 0, len = ref.length; j < len; j++) {
+        block = ref[j];
+        if (block.judgeBottom() === false) {
+          return false;
+        }
+      }
+    }
+    if (deltaPointLeft > 0) {
+      ref1 = this.blocks;
+      for (k = 0, len1 = ref1.length; k < len1; k++) {
+        block = ref1[k];
+        if (block.judgeLeft() === false) {
+          return false;
+        }
+      }
+    }
+    if (deltaPointLeft < 0) {
+      ref2 = this.blocks;
+      for (l = 0, len2 = ref2.length; l < len2; l++) {
+        block = ref2[l];
+        if (block.judgeRight() === false) {
+          return false;
+        }
+      }
+    }
     this.point.top += deltaPointTop;
     this.point.left += deltaPointLeft;
-    ref = this.blocks;
-    results = [];
-    for (j = 0, len = ref.length; j < len; j++) {
-      block = ref[j];
-      results.push(block.move(deltaPointTop, deltaPointLeft));
+    ref3 = this.blocks;
+    for (m = 0, len3 = ref3.length; m < len3; m++) {
+      block = ref3[m];
+      block.move(deltaPointTop, deltaPointLeft);
     }
-    return results;
+    return true;
   };
 
   Tetrimino.prototype.rotate = function(deg) {

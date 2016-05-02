@@ -5,6 +5,7 @@ class TetriminoBlockElement
     @pointLeft = pLeft
     @myName = name
     @type = color
+    @me = "##{@myName}"
 
     @append()
     @move(@pointTop, @pointLeft)
@@ -15,16 +16,19 @@ class TetriminoBlockElement
     return
 
   move: (deltaPointTop=0, deltaPointLeft=0) ->
-    pointTop = @getTop("##{@myName}")
-    pointLeft = @getLeft("##{@myName}")
+    # unless @judgeBorder("top", deltaPointTop) and @judgeBorder("left", deltaPointLeft)
+    #   return
 
-    $("##{@myName}").css("top", pointTop + deltaPointTop)
-    $("##{@myName}").css("left", pointLeft + deltaPointLeft)
+    pointTop = @getTop(@me)
+    pointLeft = @getLeft(@me)
+
+    $(@me).css("top", pointTop + deltaPointTop)
+    $(@me).css("left", pointLeft + deltaPointLeft)
     return
 
   moveAbsolute: (top, left) ->
-    $("##{@myName}").css("top", top)
-    $("##{@myName}").css("left", left)
+    $(@me).css("top", top)
+    $(@me).css("left", left)
     return
 
   getTop: (selector, property="top") ->
@@ -34,7 +38,28 @@ class TetriminoBlockElement
     parseInt($(selector).css("left").slice(0, -2))
 
   delete: () ->
-    $("##{@myName}").remove()
+    $(@me).remove()
+
+  judgeLeft: (direction, value) ->
+    pro = @getLeft(@me) + 30
+    if pro >= 600
+      return false
+    else
+      return true
+
+  judgeRight: () ->
+    pro = @getLeft(@me) - 30
+    if pro < 0
+      return false
+    else
+      return true
+
+  judgeBottom: () ->
+    pro = @getTop(@me) + 30
+    if pro >= 600
+      return false
+    else
+      return true
 
   helloConsole = (str) ->
     console.log "hello from #{str}"

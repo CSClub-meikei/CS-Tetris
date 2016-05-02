@@ -20,10 +20,25 @@ class Tetrimino
       "deg270": [0,0,0,0,0,0,0,0]
 
   move: (deltaPointTop, deltaPointLeft) ->
+    if deltaPointTop isnt 0
+      for block in @blocks
+        if block.judgeBottom() is off
+          return false
+    if deltaPointLeft > 0
+      for block in @blocks
+        if block.judgeLeft() is off
+          return false
+    if deltaPointLeft < 0
+      for block in @blocks
+        if block.judgeRight() is off
+          return false
+
     @point.top += deltaPointTop
     @point.left += deltaPointLeft
     for block in @blocks
       block.move(deltaPointTop, deltaPointLeft)
+
+    return true
 
   rotate: (deg) ->
     for block, i in @blocks

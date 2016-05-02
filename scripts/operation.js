@@ -8,7 +8,7 @@ test = 0;
 degValue = 0;
 
 $(document).on("ready", function() {
-  return test = new TetriminoRed;
+  test = new TetriminoRed;
 });
 
 $(window).on("keydown", function(e) {
@@ -18,7 +18,7 @@ $(window).on("keydown", function(e) {
     return test.move(0, 30);
   } else if (e.keyCode === 37) {
     return test.move(0, -30);
-  } else if (e.keyCode === 13) {
+  } else if (e.keyCode === 32) {
     if (degValue < 270) {
       return test.rotate(degValue += 90);
     } else {
