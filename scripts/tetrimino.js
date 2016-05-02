@@ -22,26 +22,22 @@ Tetrimino = (function() {
   }
 
   Tetrimino.prototype.move = function(deltaPointTop, deltaPointLeft) {
-    var block, j, k, l, len, len1, len2, len3, m, ref, ref1, ref2, ref3;
+    var block, block_, j, k, l, len, len1, len2, len3, len4, m, n, ref, ref1, ref2, ref3, ref4;
     if (deltaPointTop !== 0) {
       ref = this.blocks;
       for (j = 0, len = ref.length; j < len; j++) {
         block = ref[j];
         if (block.judgeBottom() === false) {
-          return false;
+          ref1 = this.blocks;
+          for (k = 0, len1 = ref1.length; k < len1; k++) {
+            block_ = ref1[k];
+            block_.changeAttr();
+          }
+          return "falled!";
         }
       }
     }
     if (deltaPointLeft > 0) {
-      ref1 = this.blocks;
-      for (k = 0, len1 = ref1.length; k < len1; k++) {
-        block = ref1[k];
-        if (block.judgeLeft() === false) {
-          return false;
-        }
-      }
-    }
-    if (deltaPointLeft < 0) {
       ref2 = this.blocks;
       for (l = 0, len2 = ref2.length; l < len2; l++) {
         block = ref2[l];
@@ -50,22 +46,36 @@ Tetrimino = (function() {
         }
       }
     }
+    if (deltaPointLeft < 0) {
+      ref3 = this.blocks;
+      for (m = 0, len3 = ref3.length; m < len3; m++) {
+        block = ref3[m];
+        if (block.judgeLeft() === false) {
+          return false;
+        }
+      }
+    }
     this.point.top += deltaPointTop;
     this.point.left += deltaPointLeft;
-    ref3 = this.blocks;
-    for (m = 0, len3 = ref3.length; m < len3; m++) {
-      block = ref3[m];
+    ref4 = this.blocks;
+    for (n = 0, len4 = ref4.length; n < len4; n++) {
+      block = ref4[n];
       block.move(deltaPointTop, deltaPointLeft);
     }
     return true;
   };
 
   Tetrimino.prototype.rotate = function(deg) {
-    var block, i, j, len, ref, results;
+    var block, i, j, k, len, len1, ref, ref1, results;
     ref = this.blocks;
+    for (j = 0, len = ref.length; j < len; j++) {
+      block = ref[j];
+      console.log(["bottom: " + (block.judgeBottom()), "left: " + (block.judgeLeft()), "right: " + (block.judgeRight())]);
+    }
+    ref1 = this.blocks;
     results = [];
-    for (i = j = 0, len = ref.length; j < len; i = ++j) {
-      block = ref[i];
+    for (i = k = 0, len1 = ref1.length; k < len1; i = ++k) {
+      block = ref1[i];
       results.push(block.moveAbsolute(this.point.top + this.deg["deg" + deg][i * 2], this.point.left + this.deg["deg" + deg][i * 2 + 1]));
     }
     return results;

@@ -8,7 +8,11 @@ test = 0;
 degValue = 0;
 
 $(document).on("ready", function() {
+  var timer;
   test = new TetriminoRed;
+  timer = setInterval((function() {
+    return test.move(30, 0);
+  }), 500);
 });
 
 $(window).on("keydown", function(e) {

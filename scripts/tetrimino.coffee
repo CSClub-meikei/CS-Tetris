@@ -23,14 +23,16 @@ class Tetrimino
     if deltaPointTop isnt 0
       for block in @blocks
         if block.judgeBottom() is off
-          return false
+          for block_ in @blocks
+            block_.changeAttr()
+          return "falled!"
     if deltaPointLeft > 0
       for block in @blocks
-        if block.judgeLeft() is off
+        if block.judgeRight() is off
           return false
     if deltaPointLeft < 0
       for block in @blocks
-        if block.judgeRight() is off
+        if block.judgeLeft() is off
           return false
 
     @point.top += deltaPointTop
@@ -41,6 +43,15 @@ class Tetrimino
     return true
 
   rotate: (deg) ->
+    for block in @blocks
+
+      console.log [
+          "bottom: #{block.judgeBottom()}"
+          "left: #{block.judgeLeft()}"
+          "right: #{block.judgeRight()}"
+        ]
+      # if block.judgeBottom() and block.judgeLeft() and block.judgeRight()
+    # return
     for block, i in @blocks
       block.moveAbsolute(
         @point.top + @deg["deg#{deg}"][i*2],

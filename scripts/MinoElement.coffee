@@ -16,9 +16,6 @@ class TetriminoBlockElement
     return
 
   move: (deltaPointTop=0, deltaPointLeft=0) ->
-    # unless @judgeBorder("top", deltaPointTop) and @judgeBorder("left", deltaPointLeft)
-    #   return
-
     pointTop = @getTop(@me)
     pointLeft = @getLeft(@me)
 
@@ -40,14 +37,14 @@ class TetriminoBlockElement
   delete: () ->
     $(@me).remove()
 
-  judgeLeft: (direction, value) ->
+  judgeRight: () ->
     pro = @getLeft(@me) + 30
     if pro >= 600
       return false
     else
       return true
 
-  judgeRight: () ->
+  judgeLeft: () ->
     pro = @getLeft(@me) - 30
     if pro < 0
       return false
@@ -60,6 +57,10 @@ class TetriminoBlockElement
       return false
     else
       return true
+
+  changeAttr: () ->
+    # $(@me).attr("class", "falled")
+    $(@me).removeAttr("id")
 
   helloConsole = (str) ->
     console.log "hello from #{str}"

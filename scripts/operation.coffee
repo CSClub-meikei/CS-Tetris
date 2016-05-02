@@ -3,7 +3,7 @@ test = 0
 degValue = 0
 $(document).on "ready", () ->
   test = new TetriminoRed
-  # timer = setInterval( (->test.move(30, 0)), 500)
+  timer = setInterval( (->test.move(30, 0)), 500)
   return
 
 $(window).on "keydown", (e)->

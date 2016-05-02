@@ -64,7 +64,7 @@ TetriminoBlockElement = (function() {
     return $(this.me).remove();
   };
 
-  TetriminoBlockElement.prototype.judgeLeft = function(direction, value) {
+  TetriminoBlockElement.prototype.judgeRight = function() {
     var pro;
     pro = this.getLeft(this.me) + 30;
     if (pro >= 600) {
@@ -74,7 +74,7 @@ TetriminoBlockElement = (function() {
     }
   };
 
-  TetriminoBlockElement.prototype.judgeRight = function() {
+  TetriminoBlockElement.prototype.judgeLeft = function() {
     var pro;
     pro = this.getLeft(this.me) - 30;
     if (pro < 0) {
@@ -92,6 +92,10 @@ TetriminoBlockElement = (function() {
     } else {
       return true;
     }
+  };
+
+  TetriminoBlockElement.prototype.changeAttr = function() {
+    return $(this.me).removeAttr("id");
   };
 
   helloConsole = function(str) {
